@@ -8,12 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Slf4j
 @RestController
@@ -30,4 +28,23 @@ public class PedidoController {
         log.info("PedidoController.create - end - Response: {}", pedido);
         return ResponseEntity.status(HttpStatus.CREATED).body(pedido);
     }
+
+    @GetMapping(value = "/v1/pedido", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<Pedido>> findByUser(@RequestParam Long idUser){
+        final List<Pedido> pedidos = pedidoService.findByUser(idUser);
+        return ResponseEntity.status(HttpStatus.OK).body(pedidos);
+    }
+
+    @GetMapping(value = "/v1/pedido/cozinha/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<Pedido>> findByCozinha(@PathVariable Long id){
+        final List<Pedido> pedidos = pedidoService.findByCozinha(id);
+        return ResponseEntity.status(HttpStatus.OK).body(pedidos);
+    }
+
+    @GetMapping(value = "/v1/pedido/restaurante/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<Pedido>> findByRestaurante(@PathVariable Long id){
+        final List<Pedido> pedidos = pedidoService.findByRestaurante(id);
+        return ResponseEntity.status(HttpStatus.OK).body(pedidos);
+    }
+
 }

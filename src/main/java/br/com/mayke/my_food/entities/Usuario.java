@@ -6,6 +6,7 @@ import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 
 @Data
 @Builder
@@ -14,7 +15,7 @@ import javax.validation.constraints.NotNull;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
 @Table(name = "USUARIO")
-public class Usuario {
+public class Usuario implements Serializable {
 
     @EqualsAndHashCode.Include
     @Id

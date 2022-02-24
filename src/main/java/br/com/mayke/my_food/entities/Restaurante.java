@@ -3,6 +3,7 @@ package br.com.mayke.my_food.entities;
 import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 @Data
@@ -12,7 +13,7 @@ import java.math.BigDecimal;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
 @Table(name = "RESTAURANTE")
-public class Restaurante {
+public class Restaurante implements Serializable {
 
     @EqualsAndHashCode.Include
     @Id

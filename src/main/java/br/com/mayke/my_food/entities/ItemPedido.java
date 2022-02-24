@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 @Data
@@ -13,7 +14,7 @@ import java.math.BigDecimal;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
 @Table(name = "ITEM_PEDIDO")
-public class ItemPedido {
+public class ItemPedido implements Serializable {
 
     @EqualsAndHashCode.Include
     @Id

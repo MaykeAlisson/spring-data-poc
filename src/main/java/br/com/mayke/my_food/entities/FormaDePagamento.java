@@ -3,6 +3,7 @@ package br.com.mayke.my_food.entities;
 import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Data
 @Builder
@@ -11,7 +12,7 @@ import javax.persistence.*;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
 @Table(name = "PAGAMENTO")
-public class FormaDePagamento {
+public class FormaDePagamento implements Serializable {
 
     @EqualsAndHashCode.Include
     @Id

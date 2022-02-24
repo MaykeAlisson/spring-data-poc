@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 
 @Data
 @Builder
@@ -12,7 +13,7 @@ import javax.validation.constraints.NotNull;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
 @Table(name = "COZINHA")
-public class Cozinha {
+public class Cozinha implements Serializable {
 
     @EqualsAndHashCode.Include
     @Id
