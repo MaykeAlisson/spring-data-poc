@@ -63,7 +63,7 @@ public class PedidoServiceImpl implements PedidoService {
                 .restaurante(restaurante)
                 .status(singleton(pedidoRequest.getStatus()))
                 .finalizado(false)
-                .dataPedido(LocalDateTime.now())
+//                .dataPedido(LocalDateTime.now())
                 .build();
         return pedidoRepository.save(pedido);
     }

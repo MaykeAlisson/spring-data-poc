@@ -1,6 +1,8 @@
 package br.com.mayke.my_food.entities;
 
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -46,7 +48,11 @@ public class Pedido implements Serializable {
     @JoinColumn(name = "PEDIDO_ID", insertable = true, updatable = true)
     private Set<Status> status;
 
+    @CreationTimestamp
     @Column(name = "DATA_PEDIDO")
     private LocalDateTime dataPedido;
 
+    @UpdateTimestamp
+    @Column(name = "DATA_ATUALIZACAO")
+    private LocalDateTime dataAtualizacao;
 }
