@@ -68,3 +68,5 @@ https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repository-q
 * findBy{ATRIBUTO}Containing : Busca onde ATRIBUTO contem (like = %valor%)
 * existsBy{ATRIBUTO} : Retorna um boolean se existe o atributo com o valor informado
 * countBy{ATRIBUTO} : Retorna a quantidade de resgistro com o valor do atributo informado
+
+#### * Todo relacionamento com o final ...ToOne por default usa Eager Loading

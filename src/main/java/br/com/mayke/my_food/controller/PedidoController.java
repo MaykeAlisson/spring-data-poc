@@ -3,6 +3,7 @@ package br.com.mayke.my_food.controller;
 import br.com.mayke.my_food.dto.PedidoRequestDto;
 import br.com.mayke.my_food.entities.Pedido;
 import br.com.mayke.my_food.service.pedido.PedidoService;
+import br.com.mayke.my_food.view.InfoPedidoView;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -30,21 +31,26 @@ public class PedidoController {
     }
 
     @GetMapping(value = "/v1/pedido", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<Pedido>> findByUser(@RequestParam Long idUser){
+    public ResponseEntity<List<Pedido>> findByUser(@RequestParam Long idUser) {
         final List<Pedido> pedidos = pedidoService.findByUser(idUser);
         return ResponseEntity.status(HttpStatus.OK).body(pedidos);
     }
 
     @GetMapping(value = "/v1/pedido/cozinha/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<Pedido>> findByCozinha(@PathVariable Long id){
+    public ResponseEntity<List<Pedido>> findByCozinha(@PathVariable Long id) {
         final List<Pedido> pedidos = pedidoService.findByCozinha(id);
         return ResponseEntity.status(HttpStatus.OK).body(pedidos);
     }
 
     @GetMapping(value = "/v1/pedido/restaurante/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<Pedido>> findByRestaurante(@PathVariable Long id){
+    public ResponseEntity<List<Pedido>> findByRestaurante(@PathVariable Long id) {
         final List<Pedido> pedidos = pedidoService.findByRestaurante(id);
         return ResponseEntity.status(HttpStatus.OK).body(pedidos);
+    }
+
+    @GetMapping(value = "/v1/pedido/pedido/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<InfoPedidoView> findByPedidoId(@PathVariable Long id) {
+        return ResponseEntity.status(HttpStatus.OK).body(pedidoService.buscarInfoPedidoPorId(id));
     }
 
 }

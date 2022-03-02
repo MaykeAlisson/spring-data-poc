@@ -11,10 +11,10 @@ import br.com.mayke.my_food.repository.pedido.PedidoRepository;
 import br.com.mayke.my_food.repository.restaurante.RestauranteRepository;
 import br.com.mayke.my_food.repository.usuario.UsuarioRepository;
 import br.com.mayke.my_food.service.pedido.PedidoService;
+import br.com.mayke.my_food.view.InfoPedidoView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 import static java.lang.String.format;
@@ -63,7 +63,6 @@ public class PedidoServiceImpl implements PedidoService {
                 .restaurante(restaurante)
                 .status(singleton(pedidoRequest.getStatus()))
                 .finalizado(false)
-//                .dataPedido(LocalDateTime.now())
                 .build();
         return pedidoRepository.save(pedido);
     }
@@ -74,8 +73,7 @@ public class PedidoServiceImpl implements PedidoService {
                 .orElseThrow(
                         () -> new NotFoundException(format("não foi encontrado cozinha com o id %s ", idCozinha)));
 
-        List<Pedido> pedidos = pedidoRepository.buscarPorIdCozinha(cozinha);
-        return pedidos;
+        return pedidoRepository.buscarPorIdCozinha(cozinha);
     }
 
     @Override
@@ -97,5 +95,10 @@ public class PedidoServiceImpl implements PedidoService {
 
         List<Pedido> pedidos = pedidoRepository.buscarPorIdRestaurante(restaurante.getId());
         return pedidos;
+    }
+
+    @Override
+    public InfoPedidoView buscarInfoPedidoPorId(final Long idPedido){
+        return pedidoRepository.infoPedido(idPedido);
     }
 }

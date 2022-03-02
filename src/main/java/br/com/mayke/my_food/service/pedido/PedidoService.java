@@ -2,6 +2,7 @@ package br.com.mayke.my_food.service.pedido;
 
 import br.com.mayke.my_food.dto.PedidoRequestDto;
 import br.com.mayke.my_food.entities.Pedido;
+import br.com.mayke.my_food.view.InfoPedidoView;
 
 import java.util.List;
 
@@ -13,4 +14,6 @@ public interface PedidoService {
     List<Pedido> findByUser(Long idUser);
 
     List<Pedido> findByRestaurante(Long id);
+
+    InfoPedidoView buscarInfoPedidoPorId(Long idPedido);
 }
