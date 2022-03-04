@@ -27,6 +27,6 @@ public class Status implements Serializable {
     private String descricao;
 
     @NotNull
-    @Column(name = "OCORENCIA")
-    private LocalDateTime ocorencia;
+    @Column(name = "OCORRENCIA")
+    private LocalDateTime ocorrencia;
 }

@@ -7,6 +7,8 @@ import org.hibernate.annotations.UpdateTimestamp;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -27,7 +29,7 @@ public class Pedido implements Serializable {
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "PEDIDO_ID", insertable = true, updatable = true)
-    private List<ItemPedido> itens;
+    private List<ItemPedido> itens = new ArrayList<>();
 
     @Column(name = "FINALIZADO")
     private Boolean finalizado;
@@ -41,12 +43,12 @@ public class Pedido implements Serializable {
     private Restaurante restaurante;
 
     @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name = "USUARI_ID")
+    @JoinColumn(name = "USUARIO_ID")
     private Usuario usuario;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "PEDIDO_ID", insertable = true, updatable = true)
-    private Set<Status> status;
+    private Set<Status> status = new HashSet<>();
 
     @CreationTimestamp
     @Column(name = "DATA_PEDIDO")

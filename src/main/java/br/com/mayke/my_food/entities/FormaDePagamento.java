@@ -3,6 +3,7 @@ package br.com.mayke.my_food.entities;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 @Data
@@ -20,6 +21,7 @@ public class FormaDePagamento implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull
     @Column(name = "DESCRICAO")
     private String descricao;
 }

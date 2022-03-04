@@ -70,3 +70,4 @@ https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repository-q
 * countBy{ATRIBUTO} : Retorna a quantidade de resgistro com o valor do atributo informado
 
 #### * Todo relacionamento com o final ...ToOne por default usa Eager Loading
+#### * Todo relacionamento unidirectional ao criar a tabela no banco de dados a fk não pode ser definida como not null(pq a jpa faz um insert do pai depois um update no filho)

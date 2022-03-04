@@ -8,7 +8,7 @@ public interface InfoPedidoView {
     String getDdd();
     String getTelefone();
     LocalDateTime getData();
-    Boolean getFinalizado();
+    Integer getFinalizado();
     String getDescricao();
 
 }
